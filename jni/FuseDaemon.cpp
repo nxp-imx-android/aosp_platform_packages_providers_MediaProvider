@@ -569,7 +569,7 @@ static node* make_node_entry(fuse_req_t req, node* parent, const string& name, c
     }
     TRACE_NODE(node, req);
 
-    if (should_invalidate && fuse->IsTranscodeSupportedPath(path)) {
+    if (should_invalidate && is_transcode_supported_path(path, fuse)) {
         // Some components like the MTP stack need an efficient mechanism to determine if a file
         // supports transcoding. This allows them workaround an issue with MTP clients on windows
         // where those clients incorrectly use the original file size instead of the transcoded file
